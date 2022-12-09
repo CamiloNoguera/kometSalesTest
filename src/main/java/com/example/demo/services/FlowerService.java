@@ -19,10 +19,10 @@ public class FlowerService {
     static List<FlowerModelGet> allFlowers;
     
     public List<FlowerModelGet> getAllFlower(){
-        FlowerModelGet flowerModelGet = new FlowerModelGet();
         allFlowers = new ArrayList<>();
 
         for(int i=0; i<flowerModelList.size();i++){
+            FlowerModelGet flowerModelGet = new FlowerModelGet();
             flowerModelGet.setName(flowerModelList.get(i).getName() + "-kometsales");
             flowerModelGet.setPrice(flowerModelList.get(i).getPrice());
             allFlowers.add(flowerModelGet);
@@ -32,13 +32,10 @@ public class FlowerService {
     }
 
     public List<FlowerModel> SaveFlower(List<FlowerModel> flowerList){
-        FlowerModel flowerModel = new FlowerModel();
         flowerModelList = new ArrayList<>();
 
         for(int i=0; i<flowerList.size();i++){
-            // flowerModelList.get(i).setId(flowerList.get(i).getId());
-            // flowerModelList.get(i).setName(flowerList.get(i).getName());
-            // flowerModelList.get(i).setPrice(flowerList.get(i).getPrice());
+            FlowerModel flowerModel = new FlowerModel();
             flowerModel.setId(flowerList.get(i).getId());
             flowerModel.setName(flowerList.get(i).getName());
             flowerModel.setPrice(flowerList.get(i).getPrice());
@@ -48,10 +45,10 @@ public class FlowerService {
     }
 
     public List<FlowerModel> getFlowerPrice(){
-        FlowerModel flowerModel = new FlowerModel();
         flowerPriceList = new ArrayList<>();
 
         for(int i=0; i<flowerModelList.size();i++){
+            FlowerModel flowerModel = new FlowerModel();
             if(flowerModelList.get(i).getPrice() > 20){
                 flowerModel.setId(flowerModelList.get(i).getId());
                 flowerModel.setName(flowerModelList.get(i).getName());
@@ -63,18 +60,21 @@ public class FlowerService {
     }
 
     public Boolean deleteFlower(Long id){
-        if(flowerModelList.get(0).getId() == id){
-            flowerModelList.clear();
-            return true;
+        for(int i=0; i<flowerModelList.size();i++){
+            if(flowerModelList.get(i).getId() == id){
+                flowerModelList.remove(i);
+                return true;
+            }
         }
         return false;
     }
 
     public List<FlowerModel> getFlowerByName(String name){
-        FlowerModel flowerModel = new FlowerModel();
+        
         flowerByNameList = new ArrayList<>();
 
         for(int i=0; i<flowerModelList.size();i++){
+            FlowerModel flowerModel = new FlowerModel();
             if(flowerModelList.get(i).getName().equals(name)){
                 flowerModel.setId(flowerModelList.get(i).getId());
                 flowerModel.setName(flowerModelList.get(i).getName());
