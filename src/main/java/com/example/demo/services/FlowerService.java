@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -26,8 +27,11 @@ public class FlowerService {
             flowerModelGet.setName(flowerModelList.get(i).getName() + "-kometsales");
             flowerModelGet.setPrice(flowerModelList.get(i).getPrice());
             allFlowers.add(flowerModelGet);
+            
         }
-        
+
+        Collections.sort(allFlowers, new FlowerComparator());
+
         return allFlowers;
     }
 

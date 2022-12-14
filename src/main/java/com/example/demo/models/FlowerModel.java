@@ -6,7 +6,7 @@ public class FlowerModel {
 
     private String name;
 
-    private float price;
+    private float price;  
 
     public Long getId() {
         return id;
