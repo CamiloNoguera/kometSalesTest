@@ -30,7 +30,7 @@ public class FlowerService {
             
         }
 
-        Collections.sort(allFlowers, new FlowerComparator());
+        Collections.sort(allFlowers, new FlowerComparator().reversed());
 
         return allFlowers;
     }
